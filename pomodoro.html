@@ -23,7 +23,8 @@
   </style>  
   <body>
     <div style="text-align: center">
-      <h1 id="timer"></h1>      
+      <h1 id="timer"></h1>    
+      <p id="notification"></p>  
       <button id="startBtn" onclick="start()">Start</button>    
       <button id="stopBtn" onclick="stop()">Stop</button>
       <button id="resetBtn" onclick="reset()">Reset</button>
@@ -76,9 +77,7 @@
       }
 
       function notifyMe() {
-        myWindow = window.open("Notifier", "Notifier", "width=200,height=100");
-        myWindow.document.write("<p>It is a break time!</p><br/><button onclick='window.close()'>close</button>");
-        myWindow.focus();                
+        document.getElementById("notification").innerHTML = "It is a break time!";
       }               
 
       function playSound() {
