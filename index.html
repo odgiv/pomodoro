@@ -25,10 +25,10 @@
     <div style="text-align: center">
       <h1 id="timer"></h1>    
       <p id="notification"></p>  
-      <button id="startBtn" onclick="start()">Start</button>    
-      <button id="stopBtn" onclick="stop()">Stop</button>
-      <button id="resetBtn" onclick="reset()">Reset</button>
-      <button id="break" onclick="shortBreak()">Break</button>      
+      <button id="startBtn" onclick="start()"><u>S</u>tart</button>    
+      <button id="stopBtn" onclick="stop()">S<u>t</u>op</button>
+      <button id="resetBtn" onclick="reset()"><u>R</u>eset</button>
+      <button id="break" onclick="shortBreak()"><u>B</u>reak</button>      
     </div>    
     <script>         
       init();
@@ -43,10 +43,23 @@
         currentTimerId = 0;    
         state = 0; // 1 is running, 0 is stop
         soundName = "notify.mp3";       
+
+        document.addEventListener('keydown', function(event) {
+          if (event.keyCode == 83) {
+            start();
+          } else if (event.keyCode == 84) {
+            stop();
+          } else if (event.keyCode == 82) {
+            reset();
+          } else if (event.keyCode == 66) {
+            shortBreak();
+          }
+        });
       } 
 
       function start() {
-        if(state == 0) {          
+        document.getElementById("notification").innerHTML = "";
+        if(state == 0) {                    
           startTimer();                                                
         }                                      
       }
