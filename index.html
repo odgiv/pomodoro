@@ -16,19 +16,41 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
   </head>
-  <style>
-  h1 {font-size: 200px}  
-  button {padding: 20px 40px;}
-  </style>  
   <body>
-    <div style="text-align: center">
-      <h1 id="timer"></h1>    
-      <p id="notification"></p>  
-      <button id="startBtn" onclick="start()"><u>S</u>tart</button>    
-      <button id="stopBtn" onclick="stop()">S<u>t</u>op</button>
-      <button id="resetBtn" onclick="reset()"><u>R</u>eset</button>
-      <button id="break" onclick="shortBreak()"><u>B</u>reak</button>      
+    <div style="text-align: center" class="container">
+      <div class="justify-content-center">
+          <h1 id="timer"></h1>    
+          <p id="notification"></p>  
+      </div>
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                  <button id="startBtn" onclick="start()" class="btn btn-primary btn-lg pmd-btn"><u>S</u>tart</button>    
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                  <button id="stopBtn" onclick="stop()" class="btn btn-primary btn-lg pmd-btn">S<u>t</u>op</button>
+              </div>
+            
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                  <button id="resetBtn" onclick="reset()" class="btn btn-primary btn-lg pmd-btn"><u>R</u>eset</button>            
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                  <button id="breakBtn" onclick="shortBreak()" class="btn btn-primary btn-lg pmd-btn"><u>B</u>reak</button>
+              </div> 
+          </div>            
+        </div>
+        <div class="col-sm-3 col-md-3">
+            
+        </div>                                   
+      </div>          
     </div>    
     <script>         
       init();
@@ -44,16 +66,20 @@
         state = 0; // 1 is running, 0 is stop
         soundName = "notify.mp3";       
         document.getElementById("notification").innerHTML = "";
+        var startBtn = document.getElementById("startBtn");
+        var stopBtn = document.getElementById("stopBtn");
+        var resetBtn = document.getElementById("resetBtn");
+        var breakBtn = document.getElementById("breakBtn");
 
         document.addEventListener('keydown', function(event) {
           if (event.keyCode == 83) {
-            start();
+            startBtn.click();
           } else if (event.keyCode == 84) {
-            stop();
+            stopBtn.click();
           } else if (event.keyCode == 82) {
-            reset();
+            resetBtn.click();
           } else if (event.keyCode == 66) {
-            shortBreak();
+            breakBtn.click();
           }
         });
       } 
